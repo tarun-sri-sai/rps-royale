@@ -28,11 +28,19 @@ function draw() {
   game.update();
   game.display();
 
-  if (game.isOver()) {
+  // Check if only 2 entity types remain
+  const remainingTypes = game.getRemainingTypes();
+  if (remainingTypes.length === 2 && !isOver) {
     noLoop();
-
     isOver = true;
     getToggleBtn().innerText = "Restart";
+    showWinnerModal(remainingTypes);
+    return;
+  }
+
+  if (game.isOver()) {
+    noLoop();
+    isOver = true;
   }
 }
 
@@ -48,4 +56,16 @@ function toggleSimulation() {
 
 function getToggleBtn() {
   return document.getElementById("toggle-btn");
+}
+
+function showWinnerModal(remainingTypes) {
+  const modal = document.getElementById("winner-modal");
+  const winnerText = document.getElementById("winner-text");
+
+  if (remainingTypes.length === 2) {
+    const winner = constants.TARGETS[remainingTypes[0]] === remainingTypes[1] ? remainingTypes[0] : remainingTypes[1];
+    winnerText.innerText = `${winner} wins!`;
+  }
+
+  modal.showModal();
 }

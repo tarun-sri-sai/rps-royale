@@ -23,5 +23,13 @@
     <footer>
       <button id="toggle-btn" onclick="toggleSimulation()">Start</button>
     </footer>
+
+    <dialog id="winner-modal">
+      <div class="modal-content">
+        <h2>Game Over!</h2>
+        <p id="winner-text"></p>
+        <button onclick="document.getElementById('winner-modal').close(); toggleSimulation();">Restart</button>
+      </div>
+    </dialog>
   </body>
 </html>

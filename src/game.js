@@ -30,4 +30,13 @@ class Game {
       ).length < 3
     );
   }
+
+  getRemainingTypes() {
+    return Object.keys(
+      this.entities.reduce((acc, entity) => {
+        acc[entity.id] = true;
+        return acc;
+      }, {})
+    );
+  }
 }

@@ -20,7 +20,14 @@ class Game {
     }
   }
 
-  isSame() {
-    return this.entities.every((obj) => obj.id === this.entities[0].id);
+  isOver() {
+    return (
+      Object.keys(
+        this.entities.reduce((acc, entity) => {
+          acc[entity.id] = true;
+          return acc;
+        }, {})
+      ).length < 3
+    );
   }
 }

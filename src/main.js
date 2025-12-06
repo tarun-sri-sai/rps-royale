@@ -28,7 +28,7 @@ function draw() {
   game.update();
   game.display();
 
-  if (game.isSame()) {
+  if (game.isOver()) {
     noLoop();
 
     isOver = true;

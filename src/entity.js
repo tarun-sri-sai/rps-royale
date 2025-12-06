@@ -27,11 +27,9 @@ class Entity {
   }
 
   display() {
-    const angle = atan2(this.velocity.y, this.velocity.x);
-
     push();
     translate(this.position.x, this.position.y);
-    rotate(angle + constants.ORIENTATIONS[this.id]);
+    rotate(constants.ORIENTATIONS[this.id]);
     imageMode(CENTER);
     image(
       constants.IMAGES[this.id],
